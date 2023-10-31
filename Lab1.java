@@ -30,12 +30,16 @@ public class Lab1 {
       System.out.print("Enter the value of m: ");
       int m = scanner.nextInt();
 
-      if (a <= 2) {
-        throw new IllegalArgumentException("Invalid input: a must be greater than 2.");
+      if (n >= 65535 || m >= 65535) {
+        throw new IllegalArgumentException("Invalid input: upper limits must be positive and be less than 65535.");
       }
 
-      if (b <= 0) {
-        throw new IllegalArgumentException("Invalid input: b must be positive.");
+      if (a <= 0 || a >= 65535) {
+        throw new IllegalArgumentException("Invalid input: a must be positive and be less than 65535.");
+      }
+
+      if (b <= 0 || b >= 65535) {
+        throw new IllegalArgumentException("Invalid input: b must be positive and be less than 65535.");
       }
 
       if (a > n || b > m) {
@@ -43,11 +47,9 @@ public class Lab1 {
       }
 
       for (char i = (char) a; i <= n; i++) {
-        double innerSum = 0.0;
         for (char j = (char) b; j <= m; j++) {
-          innerSum += ((double) i / j) / (i - C);
+          sum += ((double) i / j) / (i - C);
         }
-        sum += innerSum;
       }
       System.out.println("Result: " + sum);
 
